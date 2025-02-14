@@ -61,6 +61,7 @@ contract Quiz{
         require(msg.value >= quizList[quizId - 1].min_bet && msg.value <= quizList[quizId - 1].max_bet, "Bet is wrong");
         require(bets[quizId-1][msg.sender]<=quizList[quizId - 1].max_bet,"Bet is wrong");
         bets[quizId-1][msg.sender] += msg.value; 
+     
         vault_balance += msg.value;
     }
 

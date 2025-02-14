@@ -29,7 +29,7 @@ contract QuizTest is Test {
         vm.expectRevert();
         quiz.addQuiz(q);
     }
-
+    
     function testGetQuizSecurity() public {
         Quiz.Quiz_item memory q = quiz.getQuiz(1);
         assertEq(q.answer, "");
