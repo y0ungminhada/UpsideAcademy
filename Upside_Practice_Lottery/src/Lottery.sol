@@ -14,7 +14,7 @@ contract Lottery {
     Lottery_item[] public lotteryList;
     LotteryPhase public currentPhase;
 
-    mapping(uint256 => mapping(address => uint)) public bets;// 로또 번호 -> 산 사람 -> 배팅금액
+    mapping(uint256 => mapping(address => uint)) public bets;// 로또 번호 -> 산 사람 -> 배팅금액ㅋㅋ₩
     mapping(uint16 => uint256) public buyCount; // 각 번호별 구매 횟수 저장
     uint256 public payout; // 당첨자에게 줄 당첨금 계산
     uint16[] public boughtNumbers; // 구매된 로또 번호 리스트
@@ -75,6 +75,10 @@ contract Lottery {
         buyCount[BuyNum]++; // 해당 로또 번호의 구매 횟수 증가
         bets[BuyNum][msg.sender] = msg.value;
         received_msg_value += msg.value;
+            
+        if (buyCount[BuyNum] == 1) {
+            boughtNumbers.push(BuyNum);
+        }
     }
 
     // 당첨번호 출력
