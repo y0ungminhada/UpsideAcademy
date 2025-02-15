@@ -3,6 +3,7 @@ pragma solidity ^0.8.13;
 
 import "forge-std/Test.sol";
 import "../src/Quiz.sol";
+import "forge-std/console.sol";
 
 contract QuizTest is Test {
     Quiz public quiz;
@@ -83,7 +84,9 @@ contract QuizTest is Test {
     function testSolve2() public {
         quiz.betToPlay{value: q1.min_bet}(1);
         uint256 prev_vb = quiz.vault_balance();
+        console.log(prev_vb);
         uint256 prev_bet = quiz.bets(0, address(this));
+        console.log(prev_bet);
         assertEq(quiz.solveQuiz(1, ""), false);
         uint256 bet = quiz.bets(0, address(this));
         assertEq(bet, 0);
